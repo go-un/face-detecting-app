@@ -3,12 +3,12 @@ import React from 'react';
 const Rank = () => {
   return (
     <div className="App-rank">
-      <div className="App-rank-text">
+      <div className="App-text">
         {'Goun, your current rank is...'}
       </div>
-      <div className="App-rank-subtext">
+      <em className="App-text-em">
         {'#5'}
-      </div>
+      </em>
     </div>
   );
 };

@@ -1,4 +1,9 @@
 /* Common & Layout */
+body {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+em, p, button {margin: 0; padding: 0; font-style:inherit; font-family:inherit;}
+
 .bg-rainbow, body {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#3a0008+0,3d1d00+8,2d2d00+20,003a21+36,00203d+57,21003d+77,282c34+92 */
   background: #3a0008; /* Old browsers */
@@ -27,7 +32,7 @@
 }
 
 /* Navigation */
-.App-nav {
+.App-navigation {
   position: fixed;
   top: 0;
   left: 0;
@@ -35,7 +40,7 @@
   text-align: right;
 }
 
-.App-nav-link {
+.App-navigation-link {
   margin-right: 2vmin;
   padding:0 1vmin;
   line-height: 10vmin;
@@ -45,7 +50,7 @@
   border: 0;
   cursor: pointer;
 }
-.App-nav-link:hover {
+.App-navigation-link:hover {
   text-decoration: underline;
 }
 
@@ -54,6 +59,11 @@
   margin: 0 auto;
   width: 15vmin !important;
   height: 15vmin !important;
+  transition: transform 0.3s ease;
+}
+
+.App-logo:hover {
+  transform: scale(1.1);
 }
 
 .App-logo-link {
@@ -73,38 +83,33 @@
 .App-rank {
   margin-top: 5vmin;
 }
-.App-rank-text {
+.App-text {
   line-height: 5vmin;
   font-size: 3vmin;
   color: #fff;
 }
 
-.App-rank-subtext {
+.App-text-em {
+  display: block;
   line-height: 7vmin;
   font-size: 6vmin;
   color: #fff;
 }
 
 /* App Image Link Form */
-.App-form {
+.App-image-link-form {
   position: relative;
-}
-
-.App-form-text {
   margin: 5vmin 0 0;
-  line-height: 5vmin;
-  font-size: 3vmin;
-  color: #fff;
 }
 
-.App-form-inputbox {
+.App-inputbox {
   display: inline-block;
   vertical-align: top;
   box-shadow: 0 0 10px 5px #fff;
   margin-top: 5vmin;
 }
 
-.App-form-input {
+.App-input {
   vertical-align: top;
   padding: 0 15px;
   box-sizing: border-box;
@@ -117,7 +122,7 @@
   border: 0;
 }
 
-.App-form-button {
+.App-button-submit {
   vertical-align: top;
   padding: 0 15px;
   height: 10vmin;
