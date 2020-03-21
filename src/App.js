@@ -5,6 +5,8 @@ import Logo from './Components/Logo/Logo';
 import ImageLinkForm from './Components/ImageLinkForm/ImageLinkForm';
 import Rank from './Components/Rank/Rank';
 import FaceRecognition from './Components/FaceRecognition/FaceRecognition';
+import SignIn from './Components/SignIn/SignIn';
+import Register from './Components/Register/Register';
 import Particles from 'react-particles-js';
 import './App.css';
 
@@ -123,6 +125,8 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
+			route: 'home',
+			isSignedIn: false,
 			input: '',
 			imageUrl: '',
 			detectedFaces: []
@@ -130,16 +134,8 @@ class App extends Component {
 	}
 
 	calcurateFaceLocation = (data) => {
-		let faces = [];
-
-		data.outputs[0].data.regions.map(( face ) => {
-			faces.push(face);
-		});
+		let faces = data.outputs[0].data.regions;
 		this.setState({detectedFaces: faces});
-	};
-	
-	drawFaceLocation = (faces) => {
-		console.log('draw faces');
 	};
 
 	onInputChange = (event) => {
@@ -153,12 +149,17 @@ class App extends Component {
 				.predict( 
 					Clarifai.FACE_DETECT_MODEL, 
 					this.state.imageUrl )
-				.then( response => {
-					this.calcurateFaceLocation(response);
-					this.drawFaceLocation(this.state.detectedFaces);
-				})
+				.then( response => this.calcurateFaceLocation(response))
 				.catch( err => console.log(err));
 		});
+	};
+
+	onRouteChange = (route) => {
+		this.setState({route: route});
+	};
+
+	onSignedInChange = (bln) => {
+		this.setState({isSignedIn: bln});
 	};
 
 	render() {
@@ -168,14 +169,25 @@ class App extends Component {
 					params={particlesOption} 
 					className="App-particles" 
 				/> 
-				<Navigation />
-				<Logo />
-				<Rank />
-				<ImageLinkForm 
-					onInputChange={this.onInputChange} 
-					onButtonSubmit={this.onButtonSubmit} 
-				/>
-				<FaceRecognition detectedFaces={this.state.detectedFaces} imageUrl={this.state.imageUrl}/>
+				<Navigation onRouteChange={this.onRouteChange} onSignedInChange={this.onSignedInChange} isSignedIn={this.state.isSignedIn}/>
+				{
+					this.state.route === 'home' ? 
+						<div>
+							<Logo />
+							<Rank />
+							<ImageLinkForm 
+								onInputChange={this.onInputChange} 
+								onButtonSubmit={this.onButtonSubmit} 
+							/>
+							<FaceRecognition 
+								detectedFaces={this.state.detectedFaces}
+								imageUrl={this.state.imageUrl}
+							/>
+						</div> :
+							this.state.route === 'signin' ? 
+							<SignIn onRouteChange={this.onRouteChange} onSignedInChange={this.onSignedInChange}/> :
+							<Register onRouteChange={this.onRouteChange}/>
+				}
 			</div>
 		);
 	}

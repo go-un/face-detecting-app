@@ -4,7 +4,7 @@ const FaceRecognition = ({ detectedFaces, imageUrl }) => {
   return (
     <div className="App-face-recognition">
       <img id="face-recognition-image" className="App-image" src={imageUrl} alt="" />
-      <div className="App-text">{detectedFaces.length + ' Faces in this photo'}</div>
+      { detectedFaces.length ? <div className="App-text">{detectedFaces.length + ' Faces detected in the photo'}</div> : ''}
       <div className="bounding-boxes">
         {detectedFaces.map((face) => {
           let boundingBox = face.region_info.bounding_box;

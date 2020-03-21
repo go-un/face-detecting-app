@@ -98,6 +98,7 @@ em, p, button {
 
 .App-text-em {
   display: block;
+  text-align: center;
   line-height: 7vmin;
   font-size: 6vmin;
   color: #fff;
@@ -158,8 +159,7 @@ em, p, button {
 /* App Face Recognition */
 .App-face-recognition {
   position: relative;
-  margin: 5vmin;
-  overflow: hidden;
+  margin: 5vmin 5vmin 10vmin;
 }
 
 .App-face-recognition .App-text {
@@ -168,6 +168,7 @@ em, p, button {
   right: 0;
   font-weight: bold;
   text-shadow: 1px 1px 10px #000;
+  transform: translateY(100%);
 }
 
 .App-image {
@@ -199,4 +200,85 @@ em, p, button {
 }
 .bounding-box:hover {
   opacity: 1;
+}
+
+/* SignIn & register */
+.App-sign-in,
+.App-register {
+  margin-top: 10vmin;
+  max-width: 80%;
+  text-align: left;
+  color: #fff;
+}
+
+.App-input-info[type=text], .App-input-info[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  padding: 0 2vmin;
+  line-height: 8vmin;
+  font-size: 3vmin;
+}
+
+.App-input-info[type=checkbox] + .App-label {
+  margin-left: 10px;
+  font-size: 2vmin;
+}
+
+.App-label {
+  line-height: 5vmin;
+  font-size: 3vmin;
+  cursor: pointer;
+}
+
+.App-sign-in-subtext {
+  float: right;
+  line-height: 5vmin;
+  font-size: 2vmin;
+}
+
+.App-button-signin,
+.App-button-cancle {
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  padding: 0 3vmin;
+  line-height: 8vmin;
+  font-size: 3vmin;
+  color: white;
+  background-color: #4CAF50;
+}
+
+.App-button-signin:hover,
+.App-button-cancle:hover {
+  opacity: 0.8;
+}
+
+.App-button-cancle {
+  width: auto;
+  background-color: #f44336;
+}
+
+.container {
+  padding: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 767px) {
+  .App-sign-in,
+  .App-register {
+    max-width: 100%;
+  }
+  .App-sign-in-subtext {
+     display: block;
+     float: none;
+  }
+  .App-button-cancle {
+     width: 100%;
+  }
 }
