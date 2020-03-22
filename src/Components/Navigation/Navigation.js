@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Navigation = ({ onRouteChange, isSignedIn, onSignedInChange }) => {
-	if(isSignedIn) {
+const Navigation = ({ onRouteChange, user, onSignedInChange }) => {
+	if(user) {
 		return (
 			<nav className="App-navigation">
 				<button className="App-navigation-link" onClick={ () => onRouteChange('home') }>Home</button>
-				<button className="App-navigation-link" onClick={ () => { onSignedInChange(false); onRouteChange('home') } }>Sign Out</button> :
+				<button className="App-navigation-link" onClick={ () => { onSignedInChange(''); onRouteChange('home') } }>Sign Out</button> :
 			</nav>
 		)
 	} else {

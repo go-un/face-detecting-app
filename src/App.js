@@ -126,10 +126,10 @@ class App extends Component {
 		super();
 		this.state = {
 			route: 'home',
-			isSignedIn: false,
 			input: '',
 			imageUrl: '',
-			detectedFaces: []
+			detectedFaces: [],
+			user: ''
 		}
 	}
 
@@ -158,8 +158,8 @@ class App extends Component {
 		this.setState({route: route});
 	};
 
-	onSignedInChange = (bln) => {
-		this.setState({isSignedIn: bln});
+	onSignedInChange = (user) => {
+		this.setState({user: user});
 	};
 
 	render() {
@@ -169,12 +169,12 @@ class App extends Component {
 					params={particlesOption} 
 					className="App-particles" 
 				/> 
-				<Navigation onRouteChange={this.onRouteChange} onSignedInChange={this.onSignedInChange} isSignedIn={this.state.isSignedIn}/>
+				<Navigation onRouteChange={this.onRouteChange} onSignedInChange={this.onSignedInChange} user={this.state.user}/>
 				{
 					this.state.route === 'home' ? 
 						<div>
 							<Logo />
-							<Rank />
+							{ this.state.user ? <Rank user={this.state.user}/> : ''}
 							<ImageLinkForm 
 								onInputChange={this.onInputChange} 
 								onButtonSubmit={this.onButtonSubmit} 
